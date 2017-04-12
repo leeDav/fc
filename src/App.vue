@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h2 class="tc">Latest Games</h2>
     <div v-for="game in games" :key="game.id">
       <game-widget v-bind:game="game"></game-widget>
     </div>
@@ -92,6 +93,7 @@ export default {
 
 <style lang="scss">
   @import './src/scss/settings/colours';
+  @import './src/scss/trumps/text-align';
 
   html {
     -moz-osx-font-smoothing: grayscale;
