@@ -1,0 +1,12 @@
+@import './src/scss/settings/buttons';
+@import './src/scss/tools/mixin-media-queries';
+
+%button-size {
+  height: $btn-min-height;
+  width: $btn-min-width;
+
+  @include tablet {
+    height: auto;
+    width: auto;
+  }
+}
