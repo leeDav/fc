@@ -1,6 +1,10 @@
 <template>
   <div class="game__photo_container" v-bind:class="classPosition">
-    <img v-bind:src="player.photo" v-bind:alt="player.name" class="game__photo"/>
+    <img
+      v-bind:src="player.photo"
+      v-bind:alt="player.name"
+      v-bind:class="{ 'game__photo-winner': player.winner }"
+      class="game__photo"/>
   </div>
 </template>
 

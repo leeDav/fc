@@ -4,7 +4,7 @@
       <game-photo v-bind:player="game.players.p1" position="left"></game-photo>
 
       <game-info v-bind:player="game.players.p1" v-bind:score="game.scores.p1" position="left"></game-info>
-      <game-info v-bind:player="game.players.p1" v-bind:score="game.scores.p1" position="right"></game-info>
+      <game-info v-bind:player="game.players.p1" v-bind:score="game.scores.p2" position="right"></game-info>
 
       <game-photo v-bind:player="game.players.p2" position="right"></game-photo>
     </header>

@@ -41,10 +41,12 @@ export default {
             p1: {
               name: 'Kerge Kotzher',
               photo: 'http://placebeard.it/60/60/notag?1',
+              winner: true,
             },
             p2: {
               name: 'Emily M. Mills',
               photo: 'http://placebeard.it/60/60/notag?2',
+              winner: false,
             },
           },
           scores: {
@@ -66,10 +68,12 @@ export default {
             p1: {
               name: 'Lee Davies',
               photo: 'http://placebeard.it/60/60/notag?3',
+              winner: true,
             },
             p2: {
               name: 'Louis Martin',
               photo: 'http://placebeard.it/60/60/notag?4',
+              winner: true,
             },
           },
           scores: {
