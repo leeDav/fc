@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <new-game-widget></new-game-widget>
     <h2 class="tc">Latest Games</h2>
     <div v-for="game in games" :key="game.id">
       <game-widget v-bind:game="game"></game-widget>
@@ -10,15 +11,32 @@
 <script>
 import { EventBus } from './eventbus';
 import GameWidget from './components/GameWidget';
+import NewGameWidget from './components/NewGameWidget';
 
 export default {
   name: 'app',
   components: {
     GameWidget,
+    NewGameWidget,
+  },
+  data() {
+    return {
+      games: [],
+    };
   },
   created() {
+    // Listens for a "delete" button click and removes the game
     EventBus.$on('remove', (game) => {
       this.removeGame(game);
+    });
+
+    // Listens for a "new game" event
+    EventBus.$on('newgame', (gameData) => {
+      const game = this.generateGame(gameData);
+
+      if (game) {
+        this.games.push(game);
+      }
     });
   },
   methods: {
@@ -30,82 +48,38 @@ export default {
         return game;
       }).filter(Boolean);
     },
-  },
-  data() {
-    return {
-      // Mock game data
-      games: [
-        {
-          id: 1,
-          players: {
-            p1: {
-              name: 'Kerge Kotzher',
-              photo: 'http://placebeard.it/60/60/notag?1',
-              winner: true,
-            },
-            p2: {
-              name: 'Emily M. Mills',
-              photo: 'http://placebeard.it/60/60/notag?2',
-              winner: false,
-            },
-          },
-          scores: {
-            p1: 4,
-            p2: 2,
-          },
-          games: [
-            { p1: 11, p2: 7 },
-            { p1: 11, p2: 9 },
-            { p1: 11, p2: 3 },
-            { p1: 9, p2: 11 },
-            { p1: 7, p2: 11 },
-            { p1: 11, p2: 8 },
-          ],
-        },
-        {
-          id: 2,
-          players: {
-            p1: {
-              name: 'Lee Davies',
-              photo: 'http://placebeard.it/60/60/notag?3',
-              winner: true,
-            },
-            p2: {
-              name: 'Louis Martin',
-              photo: 'http://placebeard.it/60/60/notag?4',
-              winner: true,
-            },
-          },
-          scores: {
-            p1: 3,
-            p2: 3,
-          },
-          games: [
-            { p1: 7, p2: 11 },
-            { p1: 11, p2: 9 },
-            { p1: 11, p2: 3 },
-            { p1: 9, p2: 11 },
-            { p1: 7, p2: 11 },
-            { p1: 11, p2: 8 },
-          ],
-        },
-      ],
-    };
+    generateGame(gameData) {
+      const newGame = gameData;
+      newGame.id = this.games.length + 1;
+
+      return newGame;
+    },
   },
 };
 </script>
 
 <style lang="scss">
   @import './src/scss/settings/colours';
+  @import './src/scss/settings/font-sizes';
+  @import './src/scss/settings/spacing';
+  @import './src/scss/tools/mixin-font';
   @import './src/scss/trumps/text-align';
+
+  @import './src/scss/elements/button';
 
   html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: $grey-dark;
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-size: $base-font;
     font-weight: 300;
     line-height: 1.3;
+  }
+
+  h2 {
+    @include fs(2);
+    margin: 0;
   }
 
   body {

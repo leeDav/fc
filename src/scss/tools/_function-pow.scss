@@ -1,0 +1,16 @@
+// calculate power of a number
+@function pow($no, $exp) {
+  $no-at-pow: 1;
+
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $no-at-pow: $no-at-pow * $no;
+    }
+  } @else if $exp < 0 {
+    @for $i from 1 through ($exp * (-1)) {
+      $no-at-pow: $no-at-pow / $no;
+    }
+  }
+
+  @return $no-at-pow;
+}

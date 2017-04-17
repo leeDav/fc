@@ -1,0 +1,10 @@
+@import '../settings/font-sizes';
+@import 'function-pow';
+
+$golden-ratio: 1.618;
+
+@mixin fs($scale: 0) {
+  $font: floor($base-font * pow($golden-ratio, $scale));
+  font-size: $font;
+  line-height: ceil($font / 8) * 8;
+}

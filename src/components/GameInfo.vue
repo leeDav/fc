@@ -3,11 +3,6 @@
     <h3 class="game__info_h3 game__info_h3-player">{{ player.name }}</h3>
     <h3 class="game__info_h3 game__info_h3-score">{{ score }}</h3>
   </div>
-
-  <!-- <div class="game__info game__info-left">
-    <h3 class="game__info_h3 game__info_h3-player">{{ game.players.p1.name }}</h3>
-    <h3 class="game__info_h3 game__info_h3-score">{{ game.scores.p1 }}</h3>
-  </div> -->
 </template>
 
 <script>
@@ -28,6 +23,7 @@ export default {
 <style lang="scss" scoped>
   @import './src/scss/settings/colours';
   @import './src/scss/settings/spacing';
+  @import './src/scss/tools/mixin-font';
   @import './src/scss/tools/mixin-media-queries';
   @import './src/scss/tools/mixin-vertical-align';
   @import './src/scss/tools/placeholder-button-size';
@@ -74,6 +70,8 @@ export default {
   }
 
   .game__info_h3 {
+    @include fs(0);
+
     margin: 0;
 
     &.game__info_h3-score {

@@ -1,0 +1,33 @@
+@import './src/scss/settings/colours';
+@import './src/scss/settings/spacing';
+@import './src/scss/tools/placeholder-button-size';
+@import './src/scss/tools/placeholder-transition';
+
+.btn {
+  @extend %background-transition;
+  @extend %button-size;
+
+  background-color: $btn-primary;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($btn-primary, 20%);
+  }
+
+  &-rounded {
+    border-radius: 50%;
+  }
+
+  &-negative {
+    &:hover {
+      background-color: $btn-negative;
+    }
+  }
+
+  &-positive {
+    &:hover {
+      background-color: $btn-positive;
+    }
+  }
+}

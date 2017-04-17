@@ -2,11 +2,11 @@
 @import './src/scss/tools/mixin-media-queries';
 
 %button-size {
-  height: $btn-min-height;
-  width: $btn-min-width;
+  min-height: $btn-min-height;
+  min-width: $btn-min-width;
 
   @include tablet {
-    height: auto;
-    width: auto;
+    min-height: auto;
+    min-width: auto;
   }
 }

@@ -4,7 +4,7 @@
       <game-photo v-bind:player="game.players.p1" position="left"></game-photo>
 
       <game-info v-bind:player="game.players.p1" v-bind:score="game.scores.p1" position="left"></game-info>
-      <game-info v-bind:player="game.players.p1" v-bind:score="game.scores.p2" position="right"></game-info>
+      <game-info v-bind:player="game.players.p2" v-bind:score="game.scores.p2" position="right"></game-info>
 
       <game-photo v-bind:player="game.players.p2" position="right"></game-photo>
     </header>
@@ -15,7 +15,7 @@
       </ul>
     </section>
 
-    <button class="btn__delete" v-on:click="remove">X</button>
+    <button class="btn btn-negative btn-rounded" v-on:click="remove">X</button>
   </article>
 </template>
 
@@ -40,9 +40,9 @@ export default {
 <style lang="scss">
   @import './src/scss/settings/colours';
   @import './src/scss/settings/spacing';
+  @import './src/scss/tools/mixin-font';
   @import './src/scss/tools/mixin-media-queries';
   @import './src/scss/tools/mixin-vertical-align';
-  @import './src/scss/tools/placeholder-button-size';
 
   .game {
     background-color: $white;
@@ -63,6 +63,8 @@ export default {
   }
 
   .game__scores {
+    @include fs(0);
+
     list-style: none;
     margin: $base-space 0 0;
     padding: 0;
@@ -83,13 +85,9 @@ export default {
     }
   }
 
-  .btn__delete {
-    @extend %button-size;
+  .btn-negative {
     @include vertical-align(absolute);
 
-    border: 0;
-    border-radius: 50%;
-    cursor: pointer;
     right: $base-space;
   }
 </style>
