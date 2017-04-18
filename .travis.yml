@@ -12,4 +12,4 @@ install:
 
 script:
   - nvm use $NODE_VERSION
-  - npm unit
+  - npm run unit
