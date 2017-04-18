@@ -5,9 +5,5 @@ node_js:
   - v5
   - v4
 
-install:
-  - npm install -g codecov
 script:
   - npm run unit
-  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
-  - codecov

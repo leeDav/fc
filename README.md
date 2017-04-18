@@ -63,3 +63,5 @@ If given more time, I would;
 - Address accessibility concerns with `ARIA` tags
 - Add more e2e tests
 - Fix line-height issues for < 8px fonts, e.g. with [Modular Scale](http://www.modularscale.com) instead of the `font()` mixin
+- SVG icons for the "delete" button
+- Fix button sizing (padding and font size)
