@@ -40,18 +40,29 @@ export default {
     });
   },
   methods: {
-    removeGame(gameID) {
-      this.games = this.games.map((game) => {
-        if (game.id === gameID) {
+    removeGame(game) {
+      /**
+       *  Loops through the array of games, and removes
+       *  the game with the matching ID
+       *  @param  {array} game the game to remove
+       */
+      this.games = this.games.map((theGame) => {
+        if (theGame.id === game) {
           return false;
         }
         return game;
       }).filter(Boolean);
     },
+    /**
+     * Generates an ID for the new game and
+     * appends it to the object
+     *
+     * @param  {object} gameData Scores/info for the new game
+     * @return {object}          The new game
+     */
     generateGame(gameData) {
       const newGame = gameData;
       newGame.id = this.games.length + 1;
-
       return newGame;
     },
   },

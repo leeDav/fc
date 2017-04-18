@@ -13,6 +13,8 @@ export default {
   name: 'game-photo',
   props: ['player', 'position'],
   computed: {
+    // Applies the relevant classes when
+    // certain prop values are matched
     classPosition() {
       return {
         'game__photo_container-left': this.position === 'left',

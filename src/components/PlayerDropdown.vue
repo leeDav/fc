@@ -20,6 +20,12 @@
       };
     },
     methods: {
+      /**
+       * Triggers the change event when the
+       * dropdown value has... changed
+       *
+       * @param  {string} player Players name
+       */
       changed(player) {
         this.$emit('input', player);
       },

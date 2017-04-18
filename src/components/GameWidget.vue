@@ -29,6 +29,10 @@ export default {
   props: ['game'],
   components: { GamePhoto, GameInfo },
   methods: {
+    /**
+     * Dispatches an event when the remove
+     * button is clicked, sends the game.id
+     */
     remove() {
       EventBus.$emit('remove', this.game.id);
     },

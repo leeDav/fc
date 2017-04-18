@@ -22,6 +22,8 @@
       PlayerDropdown,
     },
     computed: {
+      // Disables the button if no player
+      // (or same players) are selected
       isDisabled() {
         return (this.p1 === this.p2) || (this.p1 === '' || this.p2 === '');
       },
@@ -55,6 +57,13 @@
       };
     },
     methods: {
+      /**
+       * Creates an object of mocked game data
+       * Random number at the end of placebeard.it links
+       * to bust cache, ensuring a different image each time
+       *
+       * @return {object}  Completed object of game data
+       */
       newGame() {
         // Build up game object
         const theGames = this.generateSet();
@@ -78,6 +87,12 @@
         EventBus.$emit('newgame', newGame);
         return newGame;
       },
+      /**
+       * Generates a new object for scores
+       * TODO: Tidy this up. I don't like these IFs.
+       *
+       * @return {array}  Array of set scores
+       */
       generateSet() {
         const scores = [];
         const wins = { p1: 0, p2: 0 };
@@ -101,6 +116,11 @@
 
         return scores;
       },
+      /**
+       * Starts a new set by defaulting scores to zero
+       *
+       * @return {object}  Player scores
+       */
       generateSetScores() {
         // We could generate random scores with
         // Math.floor(Math.random() * 11)
@@ -113,6 +133,15 @@
           p2: p2Score,
         };
       },
+      /**
+       * Checks to see if there's a clear victor with
+       * a 2 point lead, returns the score if there is
+       * otherwise calls itself again after calling
+       * incrementRandomPlayer()
+       *
+       * @param  {object} score   Contains the player scores
+       * @return {object} mixed   Either new scores, or incremented scores
+       */
       checkSetScores(score) {
         const p1Diff = score.p1 - score.p2;
         const p2Diff = score.p2 - score.p1;
@@ -130,6 +159,13 @@
         const newScores = this.incrementRandomPlayer(score.p1, score.p2);
         return this.checkSetScores(newScores);
       },
+      /**
+       * Used to increment a random players set score
+       *
+       * @param  {integer} p1Score Player 1's score
+       * @param  {integer} p2Score Player 2's score
+       * @return {object}          The new, incremented scores
+       */
       incrementRandomPlayer(p1Score, p2Score) {
         const playerToBump = Math.floor((Math.random() * 2) + 1);
         const newScores = { p1: p1Score, p2: p2Score };
@@ -142,8 +178,16 @@
 
         return newScores;
       },
+      /**
+       * Loops through an array of scores to determine
+       * the overall winner
+       *
+       * @param  {array} scores The scores for a set
+       * @return {object}       Count of the scores
+       */
       countWins(scores) {
         const wins = { p1: 0, p2: 0 };
+
         for (let i = 0; i < scores.length; i += 1) {
           if (scores[i].p1 > scores[i].p2) {
             wins.p1 += 1;
@@ -151,6 +195,7 @@
             wins.p2 += 1;
           }
         }
+
         return wins;
       },
     },
