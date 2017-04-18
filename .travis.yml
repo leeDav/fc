@@ -1,15 +1,9 @@
-language: java
-
-jdk:
-  - oraclejdk8
-
-env:
-  - NODE_VERSION=6.2
-
-install:
-  - nvm install $NODE_VERSION
-  - npm install
+language: node_js
+node_js:
+  - v7
+  - v6
+  - v5
+  - v4
 
 script:
-  - nvm use $NODE_VERSION
   - npm run unit
