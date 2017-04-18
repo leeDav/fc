@@ -12,10 +12,9 @@ module.exports = {
       .url(devServer)
       .waitForElementVisible('#app', 5000)
       .assert.elementPresent('.game')
-      .assert.containsText('h3', 'Kerge Kotzher')
       .assert.elementCount('img', 4)
-      .click('.btn__delete')
-      .assert.elementCount('img', 2)
+      .click('.btn-negative')
+      .assert.elementCount('img', 0)
       .end();
   },
 };
