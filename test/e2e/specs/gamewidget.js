@@ -14,7 +14,7 @@ module.exports = {
       .assert.elementPresent('.game')
       .assert.elementCount('img', 4)
       .click('.btn-negative')
-      .assert.elementCount('img', 0)
+      .assert.elementCount('img', 2)
       .end();
   },
 };

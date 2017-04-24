@@ -50,7 +50,7 @@ export default {
         if (theGame.id === game) {
           return false;
         }
-        return game;
+        return theGame;
       }).filter(Boolean);
     },
     /**
